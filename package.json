@@ -2,11 +2,12 @@
   "dependencies": {
     "@tomphttp/bare-server-node": "^1.0.2-beta-readme2",
     "bare-server-node": "github:tomphttp/bare-server-node",
-    "node-static": "^0.7.11"
+    "node-static": "^0.7.11",
+    "ultraviolet-static": "github:Xoui/Ultraviolet-Static"
   },
-  "name": "uv-app",
+  "name": "cocomelon_tv",
   "version": "1.0.0",
-  "description": "Ultraviolet instance",
+  "description": "tv moment",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
