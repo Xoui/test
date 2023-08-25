@@ -1,5 +1,11 @@
 {
-    "name": "Imagine V2",
-    "description": "Node.js Ultraviolet instance",
-    "keywords": ["tomp", "Imagine"]
+    "name": "Ela",
+    "description": "Ela.",
+    "repository": "",
+    "logo": "",
+    "keywords": [
+      "school",
+      "interstellar",
+      "ultraviolet"
+    ]
 }

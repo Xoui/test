@@ -1,20 +1,27 @@
 {
-    "dependencies": {
-      "@tomphttp/bare-server-node": "^1.0.2-beta-readme2",
-      "bare-server-node": "github:tomphttp/bare-server-node",
-      "node-static": "^0.7.11"
+    "name": "imagine",
+    "version": "4.5.0",
+    "description": "update later",
+    "type": "module",
+    "engines": {
+      "npm": ">=7.0.0",
+      "node": ">=16.0.0"
     },
-    "name": "uv-app",
-    "version": "1.0.0",
-    "description": "Ultraviolet instance",
-    "main": "index.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
       "start": "node index.js"
     },
     "keywords": [
       "proxy"
     ],
     "author": "",
-    "license": "GPL-3.0-or-later"
+    "license": "GPL-3.0-or-later",
+    "dependencies": {
+      "@titaniumnetwork-dev/ultraviolet": "^1.0.10",
+      "@tomphttp/bare-server-node": "^1.2.6",
+      "express": "^4.18.2"
+    },
+    "devDependencies": {
+      "eslint": "^8.36.0",
+      "prettier": "^2.8.4"
+    }
   }
