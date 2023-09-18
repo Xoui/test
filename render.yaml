@@ -1,6 +1,0 @@
-
-  services:
-  - type: web
-    name: Imagine 2.0
-    env: docker
-    plan: free

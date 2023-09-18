@@ -1,29 +1,33 @@
-import createServer from '@tomphttp/bare-server-node';
-import http from 'http';
-import nodeStatic from 'node-static';
+const express = require('express');
+const app = express();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
+const messageHistory = [];
 
-const bare =  createServer('/bare/');
-const serve = new nodeStatic.Server('static/');
+app.use(express.static('public'));
 
-const server = http.createServer();
+io.on('connection', (socket) => {
+  const userIpAddress = socket.handshake.address;
+  console.log(`A user connected from ${userIpAddress}`);
 
-server.on('request', (req, res) => {
-    if (bare.shouldRoute(req)) {
-		bare.routeRequest(req, res);
-	} else {
-		serve.serve(req, res);
-	}
+  // Send the last 100 messages to the newly connected client.
+  socket.emit('load previous messages', messageHistory);
+
+  socket.on('chat message', (msg) => {
+    messageHistory.push(msg);
+    // Keep only the last 100 messages.
+    if (messageHistory.length > 100) {
+      messageHistory.shift();
+    }
+    io.emit('chat message', msg);
+  });
+
+  socket.on('disconnect', () => {
+    console.log(`User disconnected from ${userIpAddress}`);
+  });
 });
 
-server.on('upgrade', (req, socket, head) => {
-	if (bare.shouldRoute(req, socket, head)) {
-		bare.routeUpgrade(req, socket, head);
-	}else{
-		socket.end();
-	}
-});
-
-server.listen({
-	port: process.env.PORT || 8080,
+http.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
 });
